@@ -9,6 +9,7 @@
         transpose() //对矩阵装置
         inverse() //逆矩阵
         maxCoeff()/minCoeff //矩阵的最大元素/最小元素
+        Identity() //以单位矩阵初始化
         
 
 # * 与 ·

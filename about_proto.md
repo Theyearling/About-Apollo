@@ -22,12 +22,15 @@
         name：对应字段的名字
         inline bool has_name() const;
         inline void clear_name();
-        inline (不同类型，不同返回值) name() const;
+        inline (不同类型，不同返回值)& name() const; //返回当前字段的值
         inline void set_name(不同类型，不同参数);
 
         对应repeated修饰的字段，有所不同
-        inline int name_size() const;
+        inline int name_size() const; //返回字段元素个数
         inline void clear_name();
-        inline (不同类型，不同返回值) name() const;
-        inline (不同类型，不同返回值) add_name();
+        inline (不同类型，不同返回值)RepeatedField<int>& name() const; //返回存储字段元素的repeated字段
+                        mutable_name(;)
+        inline (不同类型，不同返回值)& name(int index) const; //返回指定索引（从0开始）的元素
+                        mutable_name(int index)
+        inline (不同类型，不同返回值)* add_name();
 
