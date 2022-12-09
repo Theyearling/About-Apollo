@@ -10,6 +10,12 @@
         inverse() //逆矩阵
         maxCoeff()/minCoeff //矩阵的最大元素/最小元素
         Identity() //以单位矩阵初始化
+        block() //块操作，获取矩阵中的一块
+
+## block()
+        有两种定义形式：
+        block(i, j, p, q) // 表示从[i,j]开始，每行取q个元素，每列取p个元素，即p行q列
+        block<p, q>(i, j) //  表示p行q列的矩阵，从[i, j]开始，取一个p行q列的矩阵块  
         
 
 # * 与 ·

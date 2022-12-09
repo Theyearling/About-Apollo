@@ -21,3 +21,10 @@
         format：C字符串，包含了普通字符和特殊说明符的任何组合——
         "/tmp/steer_log_simple_optimal_%F_%H%M%S.csv"：表示在/tmp目录下，创建steer_log_simple_optimal_日期_时分秒.csv文件
 
+# std::fmod()
+        浮点数取模
+        double fmod (double  x，double  y); // y不能为0
+        eg: fmod(4.3, 2.1) == 0.1
+
+# noexcept关键字
+        使用noexcept表明函数或操作不会发生异常，会给编译器更大的优化空间
