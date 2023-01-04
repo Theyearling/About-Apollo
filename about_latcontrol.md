@@ -1,3 +1,6 @@
+# canbus::Chassis *chassis_
+        在modules/canbus/proto/chassis.proto中定义
+#
 # ControlComponent::Proc()
 ## Reader::Observe()
         获取Blocker存储的数据，即维护reader的blocker成员的私有变量
@@ -75,11 +78,79 @@
 # LatController::Init()
         初始化横向控制器
         调用LatController::LoadControlConf()获取相应的参数
+
         初始化A矩阵、B矩阵、state状态矩阵、k矩阵、r矩阵、q矩阵
+
+        调用LatController::InitializeFilters()初始化滤波器
+
+        调用LatController::LoadLatGainScheduler()加载横向误差增益调度器，里面有曲线样条拟合，在control中并没有启用该增益调度器   
+
+        enable_leadlag_，是否启用 向前/滞后控制器， true
+        调用LeadlagController::Init()初始化滞后控制器
+                
+
 - ### basic_state_size_ == 4
 - ### preview_window_ == 0
 - ### matrix_size = basic_state_size_ + preview_window_ == 4
 - ### Eigen::MatrixXd matrix_a_coeff_ //对应着具有V的位置的系数
+
+## LatController::LoadControlConf()
+        vehicle_param_，车辆参数，在modules/common/configs/proto/vehicle_config.proto定义，/data/vehicle_param.pb.txt初始化
+        ts_，control_conf->lat_controller_conf().ts()，0.01，控制时间间隔
+        cf_，control_conf->lat_controller_conf().cf()，155494.663，前轮转角刚度
+        cr_，control_conf->lat_controller_conf().cr()，155494.663，后轮转角刚度
+        preview_window_，前览窗口，0
+        lookahead_station_low_speed_ = lookahead_station_high_speed_，前向预览的横向误差的纵向长度，1.4224
+        lookback_station_low_speed_ = lookback_station_high_speed_，后向预览的横向误差的纵向长度，2.8448
+        wheelbase_，前后轮中心距离，2.8448
+        steer_ratio_，方向盘转数和车轮转数之间的比率，16
+        steer_single_direction_max_degree_，车轮最大转角，= vehicle_param_.max_steer_angle() / M_PI * 180 = 8.20304748437 / M_PI * 180
+        max_lat_acc_，最大理论横向加速度限制转向，5.0
+        low_speed_bound_，纵向低速边界，3.0
+        low_speed_window_，纵向低速/高速切换窗口，1.0
+        mass_fl/mass_fr/mass_rl/mass_rr，前后左右轮质量，520
+        mass_front，前轮重量，mass_rear，后轮重量，mass_，车轮总重量，2080
+        lf_，前悬长度（质心到前轴中心的长度） = wheelbase_ * (1.0 - mass_front / mass_)
+        lr_，后悬长度（质心到后轴中心的长度） = wheelbase_ * (1.0 - mass_rear / mass_)
+        iz_，转动惯量，= lf_ * lf_ * mass_front + lr_ * lr_ * mass_rear
+
+        lqr_eps，LQR求解器的参数，计算阈值，0.01
+        lqr_max_iteration_，LQR求解器的参数，迭代次数，150
+        query_relative_time，查询相对时间，用于求解target_point，0.8
+        minimum_speed_protection_，最小速度保护，保证车辆有>=最小的线速度，0.1
+##
+
+## LatController::InitializeFilters()
+        std::vector<double> den(3, 0.0); //denominators滤波器分母系数
+        std::vector<double> num(3, 0.0); //numerators滤波器分子系数
+        调用common::LpfCoefficients()填充滤波器系数
+                cutoff_frep，频率截止参数，以滤除高频信号，10
+        调用DigitalFilter::set_coefficients()传递上一步填充的滤波器系数
+
+        调用common::MeanFilter()初始化横向误差、航向误差滤波器，后续并没有用到
+
+
+### common::LpfCoefficients()
+        denominators = [1.0, 
+                        2.0 * (0.01pi^2 - 1.0) / (1.0 + sqrt(2.0) * 0.1pi + 0.01pi^2),
+                        (1.0 - sqrt(2.0) * 0.1pi + 0.01pi^2) / (1.0 + sqrt(2.0) * 0.1pi + 0.01pi^2)]
+        numeriators = [0.01pi / (1.0 + sqrt(2.0) * 0.1pi + 0.01pi^2),
+                       2.0 * 0.01pi / (1.0 + sqrt(2.0) * 0.1pi + 0.01pi^2),
+                       0.01pi / (1.0 + sqrt(2.0) * 0.1pi + 0.01pi^2)]
+
+### DigitalFilter::set_coefficients()
+        设置滤波器分子、分母的系数，并resize()分子、分母变量的size
+        denominators_存储分母系数，y_values_分母变量，resize(3,0.0)
+        numerators_存储分子系数，x_values_分子变量，resize(3,0.0)
+##
+
+## LeadlagController::Init()
+        previous_output_ = 0.0，上一个输出
+        previous_innerstate_ = 0.0，上一个内部状态
+        innerstate_ = 0.0，内部状态
+        innerstate_saturation_high_ = 3000，高内部状态饱和度（边界）
+        innerstate_saturation_low_ = -3000，低内部状态饱和度（边界）
+
 #
 
 # LatController::ComputeControlCommand()
@@ -108,6 +179,13 @@
 
         计算车辆转角steer_angle：反馈误差 + 前向误差 + 反馈误差增强
         用给定的最大横向加速度限制steer_angle
+
+        设置一些debug参数，控制器不再使用
+
+        设置ControlCommand *cmd：
+        steering_target，目标转向角，以满刻度的百分比表示 [-100, 100]，设置为common::math::Clamp(steer_angle, pre_steer_angle_ - steer_diff_with_max_rate, pre_steer_angle_ + steer_diff_with_max_rate)
+        steer_diff_with_max_rate，默认100
+        steering_rate，目标非定向转向率，以每秒满量程的百分比表示 [0, 100]，设置为 100
 
 - ### enable_gain_scheduler 置为true
 
