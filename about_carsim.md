@@ -20,7 +20,12 @@ end
 
 # carsim计算侧偏刚度
 轮胎模型“魔术公式”: 
-$$ y = c\ \ast\ sin\ (b\ \ast\ atan\ (a\ \ast\ x\ -\ d\ \ast\ (a\ \ast\ x\ -\ atan\ (a\ \ast\ x))) ) $$
+
+$$ 
+y = c\ \ast\ sin\ (b\ \ast\ atan\ (a\ \ast\ x\ -\ d\ \ast\ (a\ \ast\ x\ -\ atan\ (a\ \ast\ x))) )
+$$
+
+## 处理数据、进行计算
 ![vertical_force](/image/vertical_force.png)
 ![data_to_excel](/image/data_to_excel.png)
 ![data_to_matlab](/image/data_to_matlab.png)
