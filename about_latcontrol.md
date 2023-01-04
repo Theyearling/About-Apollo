@@ -258,6 +258,7 @@
 # LatController::ComputeLateralErrors()
         计算横向误差、横向误差率、航向误差、航向误差率，记录在debug中
         调用TrajectoryAnalyzer::QueryNearestPointByPosition()获取最接近给定位置的轨迹点，作为参考点
+        
 $$
 \left \{ 
 \begin{array}{c}
@@ -268,6 +269,7 @@ e_2=\theta - \theta_{des} \\
 \end{array}
 \right.
 $$
+        
         target_point 最接近车辆当前位置的参考路径的路径点
         target_point 的x, y, theta 设置debug当前参考路径点x, y, ref_heading
         dx / dy 参考点与车辆当前位置的差值
@@ -305,10 +307,12 @@ $$
         解黎卡提方程，求出K矩阵
         加了一个M（混合）矩阵 M.rows() == Q.rows() && M.cols() == R.cols() 被初始化为0矩阵，感觉是没有作用
         初始 P = Q
+        
 $$
 {\dot P} = A^T \ast \ P\ \ast \ A\ - (A^T \ast \ P\ \ast \ B\ +\ M)\ \ast (R\ +\ B^{T}\ \ast\ P\ \ast\ B)^{-1}\ \ast\ (B^T\ \ast\ P\ \ast\ A\ +\ M^T)\ +\ Q \\
-P\ =\ {\dot P}\; \;\;\;\;\;\; 更新矩阵P
+P\ =\ {\dot P} \ \ \\\ 更新矩阵P
 $$
+        
 $$
 K\ =\ (R\ +\ B^{T}\ \ast\ P\ \ast\ B)^{-1}\ \ast\ (B^T\ \ast\ P\ \ast\ A\ +\ M^T)
 $$
