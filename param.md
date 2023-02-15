@@ -44,7 +44,7 @@
     </tr>
     <tr>
         <td>lookahead_station_high_speed_</td>
-        <td>纵向长度用于向前驱动期间的前瞻横向误差估计，默认1.4224</td>
+        <td>纵向长度用于向前驱动期间的前瞻横向误差估计，默认2.8448</td>
         <td></td>
         <td></td>
     </tr>
@@ -322,9 +322,434 @@
     </tr>
 </table>
 <br><br>
-
 <table>
     <caption>Simulink</caption>
+    <tbody>
+        <tr aria-rowspan="18">
+            <td rowspan="3">station_pid</td>
+            <td rowspan="1">kp</td>
+            <td rowspan="1">0.2/td>
+            <td rowspan="17"><img src="/image/param/simulink_3.png"></td>
+        </tr>
+        <tr>
+            <td rowspan="1">ki</td>
+            <td rowspan="1">0.0</td>
+        </tr>
+        <tr>
+            <td rowspan="1">kd</td>
+            <td rowspan="1">0.0</td>
+        </tr>
+        <tr>
+            <td rowspan="3">speed_pid</td>
+            <td rowspan="1">kp</td>
+            <td rowspan="1">2.0</td>
+        </tr>
+        <tr>
+            <td rowspan="1">ki</td>
+            <td rowspan="1">0.3</td>
+        </tr>
+        <tr>
+            <td rowspan="1">kd</td>
+            <td rowspan="1">0.0</td>
+        </tr>
+        <tr>
+            <td rowspan="3">lateral_err_pid</td>
+            <td rowspan="1">kp</td>
+            <td rowspan="1">0.0</td>
+        </tr>
+        <tr>
+            <td rowspan="1">ki</td>
+            <td rowspan="1">0.0</td>
+        </tr>
+        <tr>
+            <td rowspan="1">kd</td>
+            <td rowspan="1">0.0</td>
+        </tr>
+        <tr>
+            <td rowspan="5">LQR</td>
+            <td rowspan="4">Q</td>
+            <td rowspan="1">0.05</td>
+        </tr>
+        <tr>
+            <td rowspan="1">0.0</td>
+        </tr>
+        <tr>
+            <td rowspan="1">1.0</td>
+        </tr>
+        <tr>
+            <td rowspan="1">0.0</td>
+        </tr>
+        <tr>
+            <td rowspan="1">R</td>
+            <td rowspan="1">1</td>
+        </tr>
+    </tbody>
+    <br>
+    <tbody>
+        <tr aria-rowspan="18">
+            <td rowspan="3">station_pid</td>
+            <td rowspan="1">kp</td>
+            <td rowspan="1">0.2/td>
+            <td rowspan="17"><img src="/image/param/change_R_0.5.png"></td>
+        </tr>
+        <tr>
+            <td rowspan="1">ki</td>
+            <td rowspan="1">0.0</td>
+        </tr>
+        <tr>
+            <td rowspan="1">kd</td>
+            <td rowspan="1">0.0</td>
+        </tr>
+        <tr>
+            <td rowspan="3">speed_pid</td>
+            <td rowspan="1">kp</td>
+            <td rowspan="1">2.0</td>
+        </tr>
+        <tr>
+            <td rowspan="1">ki</td>
+            <td rowspan="1">0.3</td>
+        </tr>
+        <tr>
+            <td rowspan="1">kd</td>
+            <td rowspan="1">0.0</td>
+        </tr>
+        <tr>
+            <td rowspan="3">lateral_err_pid</td>
+            <td rowspan="1">kp</td>
+            <td rowspan="1">0.0</td>
+        </tr>
+        <tr>
+            <td rowspan="1">ki</td>
+            <td rowspan="1">0.0</td>
+        </tr>
+        <tr>
+            <td rowspan="1">kd</td>
+            <td rowspan="1">0.0</td>
+        </tr>
+        <tr>
+            <td rowspan="5">LQR</td>
+            <td rowspan="4">Q</td>
+            <td rowspan="1">0.05</td>
+        </tr>
+        <tr>
+            <td rowspan="1">0.0</td>
+        </tr>
+        <tr>
+            <td rowspan="1">1.0</td>
+        </tr>
+        <tr>
+            <td rowspan="1">0.0</td>
+        </tr>
+        <tr>
+            <td rowspan="1">R</td>
+            <td rowspan="1">0.5</td>
+        </tr>
+    </tbody>
+    <br>
+    <tbody>
+        <tr aria-rowspan="18">
+            <td rowspan="3">station_pid</td>
+            <td rowspan="1">kp</td>
+            <td rowspan="1">0.2/td>
+            <td rowspan="17"><img src="/image/param/change_R_0.1.png"></td>
+        </tr>
+        <tr>
+            <td rowspan="1">ki</td>
+            <td rowspan="1">0.0</td>
+        </tr>
+        <tr>
+            <td rowspan="1">kd</td>
+            <td rowspan="1">0.0</td>
+        </tr>
+        <tr>
+            <td rowspan="3">speed_pid</td>
+            <td rowspan="1">kp</td>
+            <td rowspan="1">2.0</td>
+        </tr>
+        <tr>
+            <td rowspan="1">ki</td>
+            <td rowspan="1">0.3</td>
+        </tr>
+        <tr>
+            <td rowspan="1">kd</td>
+            <td rowspan="1">0.0</td>
+        </tr>
+        <tr>
+            <td rowspan="3">lateral_err_pid</td>
+            <td rowspan="1">kp</td>
+            <td rowspan="1">0.0</td>
+        </tr>
+        <tr>
+            <td rowspan="1">ki</td>
+            <td rowspan="1">0.0</td>
+        </tr>
+        <tr>
+            <td rowspan="1">kd</td>
+            <td rowspan="1">0.0</td>
+        </tr>
+        <tr>
+            <td rowspan="5">LQR</td>
+            <td rowspan="4">Q</td>
+            <td rowspan="1">0.05</td>
+        </tr>
+        <tr>
+            <td rowspan="1">0.0</td>
+        </tr>
+        <tr>
+            <td rowspan="1">1.0</td>
+        </tr>
+        <tr>
+            <td rowspan="1">0.0</td>
+        </tr>
+        <tr>
+            <td rowspan="1">R</td>
+            <td rowspan="1">0.1</td>
+        </tr>
+    </tbody>
+    <br>
+    <tbody>
+        <tr aria-rowspan="18">
+            <td rowspan="3">station_pid</td>
+            <td rowspan="1">kp</td>
+            <td rowspan="1">0.2/td>
+            <td rowspan="17"><img src="/image/param/change_R_5.png"></td>
+        </tr>
+        <tr>
+            <td rowspan="1">ki</td>
+            <td rowspan="1">0.0</td>
+        </tr>
+        <tr>
+            <td rowspan="1">kd</td>
+            <td rowspan="1">0.0</td>
+        </tr>
+        <tr>
+            <td rowspan="3">speed_pid</td>
+            <td rowspan="1">kp</td>
+            <td rowspan="1">2.0</td>
+        </tr>
+        <tr>
+            <td rowspan="1">ki</td>
+            <td rowspan="1">0.3</td>
+        </tr>
+        <tr>
+            <td rowspan="1">kd</td>
+            <td rowspan="1">0.0</td>
+        </tr>
+        <tr>
+            <td rowspan="3">lateral_err_pid</td>
+            <td rowspan="1">kp</td>
+            <td rowspan="1">0.0</td>
+        </tr>
+        <tr>
+            <td rowspan="1">ki</td>
+            <td rowspan="1">0.0</td>
+        </tr>
+        <tr>
+            <td rowspan="1">kd</td>
+            <td rowspan="1">0.0</td>
+        </tr>
+        <tr>
+            <td rowspan="5">LQR</td>
+            <td rowspan="4">Q</td>
+            <td rowspan="1">0.05</td>
+        </tr>
+        <tr>
+            <td rowspan="1">0.0</td>
+        </tr>
+        <tr>
+            <td rowspan="1">1.0</td>
+        </tr>
+        <tr>
+            <td rowspan="1">0.0</td>
+        </tr>
+        <tr>
+            <td rowspan="1">R</td>
+            <td rowspan="1">5</td>
+        </tr>
+    </tbody>
+    <br>
+    <tbody>
+        <tr aria-rowspan="18">
+            <td rowspan="3">station_pid</td>
+            <td rowspan="1">kp</td>
+            <td rowspan="1">0.2/td>
+            <td rowspan="17"><img src="/image/param/change_R_10.png"></td>
+        </tr>
+        <tr>
+            <td rowspan="1">ki</td>
+            <td rowspan="1">0.0</td>
+        </tr>
+        <tr>
+            <td rowspan="1">kd</td>
+            <td rowspan="1">0.0</td>
+        </tr>
+        <tr>
+            <td rowspan="3">speed_pid</td>
+            <td rowspan="1">kp</td>
+            <td rowspan="1">2.0</td>
+        </tr>
+        <tr>
+            <td rowspan="1">ki</td>
+            <td rowspan="1">0.3</td>
+        </tr>
+        <tr>
+            <td rowspan="1">kd</td>
+            <td rowspan="1">0.0</td>
+        </tr>
+        <tr>
+            <td rowspan="3">lateral_err_pid</td>
+            <td rowspan="1">kp</td>
+            <td rowspan="1">0.0</td>
+        </tr>
+        <tr>
+            <td rowspan="1">ki</td>
+            <td rowspan="1">0.0</td>
+        </tr>
+        <tr>
+            <td rowspan="1">kd</td>
+            <td rowspan="1">0.0</td>
+        </tr>
+        <tr>
+            <td rowspan="5">LQR</td>
+            <td rowspan="4">Q</td>
+            <td rowspan="1">0.05</td>
+        </tr>
+        <tr>
+            <td rowspan="1">0.0</td>
+        </tr>
+        <tr>
+            <td rowspan="1">1.0</td>
+        </tr>
+        <tr>
+            <td rowspan="1">0.0</td>
+        </tr>
+        <tr>
+            <td rowspan="1">R</td>
+            <td rowspan="1">10</td>
+        </tr>
+    </tbody>
+    <br>
+    <tr aria-rowspan="18">
+            <td rowspan="3">station_pid</td>
+            <td rowspan="1">kp</td>
+            <td rowspan="1">0.2/td>
+            <td rowspan="17"><img src="/image/param/simulink_4.png"></td>
+        </tr>
+        <tr>
+            <td rowspan="1">ki</td>
+            <td rowspan="1">0.0</td>
+        </tr>
+        <tr>
+            <td rowspan="1">kd</td>
+            <td rowspan="1">0.0</td>
+        </tr>
+        <tr>
+            <td rowspan="3">speed_pid</td>
+            <td rowspan="1">kp</td>
+            <td rowspan="1">2.0</td>
+        </tr>
+        <tr>
+            <td rowspan="1">ki</td>
+            <td rowspan="1">0.3</td>
+        </tr>
+        <tr>
+            <td rowspan="1">kd</td>
+            <td rowspan="1">0.0</td>
+        </tr>
+        <tr>
+            <td rowspan="3">lateral_err_pid</td>
+            <td rowspan="1">kp</td>
+            <td rowspan="1">0.0</td>
+        </tr>
+        <tr>
+            <td rowspan="1">ki</td>
+            <td rowspan="1">0.0</td>
+        </tr>
+        <tr>
+            <td rowspan="1">kd</td>
+            <td rowspan="1">0.0</td>
+        </tr>
+        <tr>
+            <td rowspan="5">LQR</td>
+            <td rowspan="4">Q</td>
+            <td rowspan="1">1.0</td>
+        </tr>
+        <tr>
+            <td rowspan="1">1.0</td>
+        </tr>
+        <tr>
+            <td rowspan="1">1.0</td>
+        </tr>
+        <tr>
+            <td rowspan="1">1.0</td>
+        </tr>
+        <tr>
+            <td rowspan="1">R</td>
+            <td rowspan="1">1</td>
+        </tr>
+    </tbody>
+    <br>
+    <tbody>
+        <tr aria-rowspan="18">
+            <td rowspan="3">station_pid</td>
+            <td rowspan="1">kp</td>
+            <td rowspan="1">0.6</td>
+            <td rowspan="17"><img src="/image/param/simulink_2.png"></td>
+        </tr>
+        <tr>
+            <td rowspan="1">ki</td>
+            <td rowspan="1">0.0</td>
+        </tr>
+        <tr>
+            <td rowspan="1">kd</td>
+            <td rowspan="1">0.0</td>
+        </tr>
+        <tr>
+            <td rowspan="3">speed_pid</td>
+            <td rowspan="1">kp</td>
+            <td rowspan="1">1.2</td>
+        </tr>
+        <tr>
+            <td rowspan="1">ki</td>
+            <td rowspan="1">0.8</td>
+        </tr>
+        <tr>
+            <td rowspan="1">kd</td>
+            <td rowspan="1">0.8</td>
+        </tr>
+        <tr>
+            <td rowspan="3">lateral_err_pid</td>
+            <td rowspan="1">kp</td>
+            <td rowspan="1">0.0</td>
+        </tr>
+        <tr>
+            <td rowspan="1">ki</td>
+            <td rowspan="1">0.0</td>
+        </tr>
+        <tr>
+            <td rowspan="1">kd</td>
+            <td rowspan="1">0.0</td>
+        </tr>
+        <tr>
+            <td rowspan="5">LQR</td>
+            <td rowspan="4">Q</td>
+            <td rowspan="1">0.05</td>
+        </tr>
+        <tr>
+            <td rowspan="1">0.0</td>
+        </tr>
+        <tr>
+            <td rowspan="1">1.0</td>
+        </tr>
+        <tr>
+            <td rowspan="1">0.0</td>
+        </tr>
+        <tr>
+            <td rowspan="1">R</td>
+            <td rowspan="1">1</td>
+        </tr>
+    </tbody>
+    <br>
     <tbody>
         <tr aria-rowspan="18">
             <td rowspan="3">station_pid</td>
