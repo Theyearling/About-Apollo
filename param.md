@@ -321,14 +321,14 @@
         <td rowspan="1">kd</td>
     </tr>
 </table>
-<br><br>
-<table>
+<br>
+<table style="text-align: center;">
     <caption>Simulink</caption>
     <tbody>
         <tr aria-rowspan="18">
             <td rowspan="3">station_pid</td>
             <td rowspan="1">kp</td>
-            <td rowspan="1">0.2/td>
+            <td rowspan="1">0.2</td>
             <td rowspan="17"><img src="/image/param/simulink_3.png"></td>
         </tr>
         <tr>
@@ -389,7 +389,7 @@
         <tr aria-rowspan="18">
             <td rowspan="3">station_pid</td>
             <td rowspan="1">kp</td>
-            <td rowspan="1">0.2/td>
+            <td rowspan="1">0.2</td>
             <td rowspan="17"><img src="/image/param/change_R_0.5.png"></td>
         </tr>
         <tr>
@@ -450,7 +450,7 @@
         <tr aria-rowspan="18">
             <td rowspan="3">station_pid</td>
             <td rowspan="1">kp</td>
-            <td rowspan="1">0.2/td>
+            <td rowspan="1">0.2</td>
             <td rowspan="17"><img src="/image/param/change_R_0.1.png"></td>
         </tr>
         <tr>
@@ -511,7 +511,7 @@
         <tr aria-rowspan="18">
             <td rowspan="3">station_pid</td>
             <td rowspan="1">kp</td>
-            <td rowspan="1">0.2/td>
+            <td rowspan="1">0.2</td>
             <td rowspan="17"><img src="/image/param/change_R_5.png"></td>
         </tr>
         <tr>
@@ -572,7 +572,7 @@
         <tr aria-rowspan="18">
             <td rowspan="3">station_pid</td>
             <td rowspan="1">kp</td>
-            <td rowspan="1">0.2/td>
+            <td rowspan="1">0.2</td>
             <td rowspan="17"><img src="/image/param/change_R_10.png"></td>
         </tr>
         <tr>
@@ -632,7 +632,7 @@
     <tr aria-rowspan="18">
             <td rowspan="3">station_pid</td>
             <td rowspan="1">kp</td>
-            <td rowspan="1">0.2/td>
+            <td rowspan="1">0.2</td>
             <td rowspan="17"><img src="/image/param/simulink_4.png"></td>
         </tr>
         <tr>
