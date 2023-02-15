@@ -17,8 +17,12 @@ function output = getCalibrationData(name)  %name表示要读取的数据，cali
     
     fclose(fileID);
 end                                                                         
+```   
+
+# matlab读取csv数据
+```
+localization_data = csvread("文件路径", 0, 0) % csv数据行列下标从0开始，后面两个参数限制开始取数据的行列
 ```                                                                         
-                                                                            
 # carsim计算侧偏刚度  
 
 轮胎模型“魔术公式”:     

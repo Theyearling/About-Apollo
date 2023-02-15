@@ -177,6 +177,8 @@
 
         调用LatController::ComputeFeedForward()计算前向误差
 
+        启用超前滞后控制LeadlagController::Control （转向角度补偿，即增强反馈误差）
+
         计算车辆转角steer_angle：反馈误差 + 前向误差 + 反馈误差增强
         用给定的最大横向加速度限制steer_angle
 
@@ -288,11 +290,11 @@ $$
         设置debug的heading_error_rate，航向误差率 = heading_rate - ref_heading_rate
         设置debug的heading_acceleration，航向加速度（航向速度对于时间的导数） = （heading_rate - 前一个heading_rate）/ t
         设置debug的ref_heading_acceleration，参考的航向加速度 = （ref_heading_rate - 前一个ref_heading_rate）/ t
-         设置debug的heading_error_acceleration，航向加速度误差 = heading_acceleration - ref_heading_acceleration
-         设置debug的heading_jerk，车辆角速度的二阶导数 = (heading_acceleration - ref_heading_acceleration) / t
-         设置debug的ref_heading_jerk， 车辆参考角速度的二阶导数 = (ref_heading_acceleration - ref_heading_acceleration) / t
-         设置debug的heading_error_jerk，二阶导数误差 = (heading_error_jerk - ref_heading_error_jerk)
-         设置debug的curvature，路径曲率 = 参考路径点记录的曲率
+        设置debug的heading_error_acceleration，航向加速度误差 = heading_acceleration - ref_heading_acceleration
+        设置debug的heading_jerk，车辆角速度的二阶导数 = (heading_acceleration - ref_heading_acceleration) / t
+        设置debug的ref_heading_jerk， 车辆参考角速度的二阶导数 = (ref_heading_acceleration - ref_heading_acceleration) / t
+        设置debug的heading_error_jerk，二阶导数误差 = (heading_error_jerk - ref_heading_error_jerk)
+        设置debug的curvature，路径曲率 = 参考路径点记录的曲率
 
 
 - ### query_time_nearest_point_only 默认false
