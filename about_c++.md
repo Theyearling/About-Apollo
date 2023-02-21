@@ -104,7 +104,7 @@ int main(){
   my_log_file_ << std::setprecision(6);
   myWriteData(my_log_file_);
 
-  // 第一种写法
+  // 第一种写法 没有办法限制小数点后的位数
   // const std::string my_log_str = absl::StrCat(
   //   com.x(), ",", com.y(), ",", driving_orientation_
   // );
@@ -120,3 +120,95 @@ int main(){
 # map unordered_map 的遍历方法
 ## 迭代器iterator
 ```
+for(map<int,int>::iterator it=mp.begin();it!=mp.end();++it)
+	cout<<it->first<<"--"<<it->second<<"\t";
+
+for(map<int,int>::const_iterator it=mp.begin();it!=mp.end();++it)
+	cout<<it->first<<"--"<<it->second<<"\t";
+
+```
+## 类型萃取(traits) value_type
+```
+for(map<int,int>::value_type& i:mp)
+	cout<<i.first<<"--"<<i.second<<"\t";
+
+```
+### value_type
+STL内嵌数据类型，通俗的说value_type 就是stl容器盛装的数据的数据类型<br>
+```
+vector<int> vec;
+vector<int>::value_type x;
+```
+第一句是声明一个盛装数据类型是int的数据的vector，第二句是使用vector<int>::value_type定义一个变量x
+## 实际类型 pair
+```
+for(pair<const int ,int>&i:mp)//key必须是const的
+	cout<<i.first<<"--"<<i.second<<"\t";
+
+```
+## 结构化绑定 auto
+```
+    for(auto&[k,v]:mp)
+    cout<<k<<"--"<<v<<"\t";
+
+```
+
+# c++11: std::make_tuple() std::tuple()
+包含不同数据类型的结构
+```
+#include <tuple>
+
+std::tuple<int, double, string> tp1{1, 1.1, "111"};
+// 需要依次指定元素的数据类型
+auto tp2 = std::make_tuple(1, 1.1, "111");
+// 无需指定数据类型，自动推导
+
+// 与vector等结合
+using tp_type = tuple<int, double, string>;
+vector<tuple<int, double, string> > vtp;
+set<tp_type> stp;
+// 加入数据
+vtp.push_back(make_tuple(1, 1.1, "111"));
+vtp.push_back(1, 1.1, "111");
+stp.emplace(make_tuple(1, 1.1, "111"));
+stp.emplace(1, 1.1, "111");
+
+// 读取数据
+for(auto i : vtp){
+        cout << get<0>(i) << get<1>(i) << get<2>(i) << endl;
+}
+```
+
+# c++11: std::ref() std::cref()
+用于取某个变量的引用，解决一些传参问题<br>
+如函数式编程(std::bind)在使用时是对参数直接拷贝，而不是引用<br>
+std::ref()用于按引用传递的值<br>
+std::cref()用于按const引用传递的值<br>
+```
+#include <functional>
+#include <iostream>
+
+void f(int& n1, int& n2, const int& n3)
+{
+    std::cout << "In function: n1[" << n1 << "]    n2[" << n2 << "]    n3[" << n3 << "]" << std::endl;
+    ++n1; // 增加存储于函数对象的 n1 副本
+    ++n2; // 增加 main() 的 n2
+    //++n3; // 编译错误
+    std::cout << "In function end: n1[" << n1 << "]     n2[" << n2 << "]     n3[" << n3 << "]" << std::endl;
+}
+
+int main()
+{
+    int n1 = 1, n2 = 1, n3 = 1;
+    std::cout << "Before function: n1[" << n1 << "]     n2[" << n2 << "]     n3[" << n3 << "]" << std::endl;
+    // Before function: n1[1]     n2[1]     n3[1]
+    std::function<void()> bound_f = std::bind(f, n1, std::ref(n2), std::cref(n3));
+    bound_f();
+    // In function: n1[1]    n2[1]    n3[1]
+    // In function end: n1[2]     n2[2]     n3[1]
+    std::cout << "After function: n1[" << n1 << "]     n2[" << n2 << "]     n3[" << n3 << "]" << std::endl;
+    // After function: n1[1]     n2[2]     n3[1]
+}
+```
+n1是值拷贝传递，n2是引用传递，n3是常引用传递<br>
+**和 std::bind 类似，多线程的 std::thread 也是必须显式通过 std::ref 来绑定引用进行传参，否则，形参的引用声明是无效的。**
