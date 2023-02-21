@@ -56,7 +56,7 @@
     </tr>
     <tr>
         <td>steer_ratio_</td>
-        <td>方向盘转数与车轮转数之间的比率</td>
+        <td>方向盘转数与车轮转数之间的比率, 默认10</td>
         <td></td>
         <td></td>
     </tr>
@@ -68,19 +68,19 @@
     </tr>
     <tr>
         <td>max_lat_acc_</td>
-        <td>将转向限制为最大理论横向加速度</td>
+        <td>将转向限制为最大理论横向加速度, 默认4.0</td>
         <td></td>
         <td></td>
     </tr>
     <tr>
         <td>low_speed_bound_</td>
-        <td>低/高速控制器切换速度</td>
+        <td>低/高速控制器切换速度, 默认1.2</td>
         <td></td>
         <td></td>
     </tr>
     <tr>
         <td>low_speed_window_</td>
-        <td>低速/高速切换转换窗口</td>
+        <td>低速/高速切换转换窗口, 默认1.0</td>
         <td></td>
         <td></td>
     </tr>
@@ -128,14 +128,14 @@
     </tr>
     <tr>
         <td>Q</td>
-        <td>半正定矩阵, Q值大, 则状态x(t)就以更快的速度衰减到0</td>
+        <td>半正定矩阵, Q值大, 则状态x(t)就以更快的速度衰减到0, 默认对角元素[1.2, 0.2, 1.0, 0.2]</td>
         <td></td>
         <td></td>
     </tr>
     <tr>
     <tr>
         <td>R</td>
-        <td>正定矩阵, R值大, 则更关注输入变量u(t), 状态衰减将减慢</td>
+        <td>正定矩阵, R值大, 则更关注输入变量u(t), 状态衰减将减慢, 默认 1</td>
         <td></td>
         <td></td>
     </tr>
@@ -166,7 +166,7 @@
     </tr>
     <tr>
         <td>enable_look_ahead_back_control_</td>
-        <td>前瞻控制器开关</td>
+        <td>前瞻控制器开关, 默认true</td>
         <td></td>
         <td></td>
     </tr>
@@ -174,16 +174,20 @@
         <td rowspan='2'>enable_leadlag</td>
         <td rowspan='2'>是否启用超前滞后开关, 默认false</td>
         <td rowspan='1'>true</td>
-        <td rowspan='2'>figure</td>
+        <td rowspan='2'></td>
     </tr>
     <tr>
         <td rowspan='1'>false</td>
     </tr>
+    <tr aria-rowspan="2" style="text-align: center;">
+        <td rowspan="2" align="center">FLAGS_enable_feedback_augment_on_high_speed</td>
+        <td rowspan="2" align="center">启用对高速横向误差的增强控制, 在modules/control/conf/control.conf中真正赋值, enable_leadlag为true时才会有作用</td>
+        <td rowspan="1" align="center">true</td>
+        <td rowspan="1" align="center"><img src="/image/param/lat_enable_feedback_augment_on_high_speed_true.png"</td>
+    </tr>
     <tr>
-        <td>FLAGS_enable_feedback_augment_on_high_speed</td>
-        <td>启用对高速横向误差的增强控制, 在modules/control/conf/control.conf中真正赋值</td>
-        <td></td>
-        <td></td>
+        <td rowspan="1" align="center">false</td>
+        <td rowspan="1" align="center"><img src="/image/param/lat_enable_feedback_augment_on_high_speed_false.png"</td>
     </tr>
     <tr>
         <td>FLAGS_set_steer_limit</td>
@@ -320,6 +324,64 @@
     <tr>
         <td rowspan="1">kd</td>
     </tr>
+</table>
+<br>
+<table style="text-align: center;">
+    <caption>添加横向误差 角度补偿PID</caption>
+    <tr>
+        <td align="center">no_change</td>
+        <td align="center">no_change</td>
+        <td align="center"><img src="/image/param/lat_enable_feedback_augment_on_high_speed_false.png"</td>
+    </tr>
+    <tbody>
+        <tr aria-rowspan="4">
+            <td rowspan="1" align="center">kp</td>
+            <td rowspan="1" align="center">0.8</td>
+            <td rowspan="3"><img src="/image/param/lat_err_feedback_angle_P_0.8.png"</td>
+        </tr>
+        <tr>
+            <td rowspan="1" align="center">ki</td>
+            <td rowspan="1" align="center">0.0</td>
+        </tr>
+        <tr>
+            <td rowspan="1" align="center">kd</td>
+            <td rowspan="1" align="center">0.0</td>
+        </tr>
+    </tbody>
+    <tbody>
+        <tr aria-rowspan="4">
+            <td rowspan="1" align="center">kp</td>
+            <td rowspan="1" align="center">1.2</td>
+            <td rowspan="3"><img src="/image/param/lat_err_feedback_angle_P_1.2.png"</td>
+        </tr>
+        <tr>
+            <td rowspan="1" align="center">ki</td>
+            <td rowspan="1" align="center">0.0</td>
+        </tr>
+        <tr>
+            <td rowspan="1" align="center">kd</td>
+            <td rowspan="1" align="center">0.0</td>
+        </tr>
+    </tbody>
+    <tbody>
+        <tr aria-rowspan="5">
+            <td rowspan="1" align="center">kp</td>
+            <td rowspan="1" align="center">0.8</td>
+            <td rowspan="4"><img src="/image/param/lat_err_feedback_angle_P_0.8.png"</td>
+        </tr>
+        <tr>
+            <td rowspan="1" align="center">ki</td>
+            <td rowspan="1" align="center">0.0</td>
+        </tr>
+        <tr>
+            <td rowspan="1" align="center">kd</td>
+            <td rowspan="1" align="center">0.0</td>
+        </tr>
+        <tr>
+            <td rowspan="1" align="center">Q</td>
+            <td rowspan="1" align="center">[0.05,0,1,0]</td>
+        </tr>
+    </tbody>
 </table>
 <br>
 <table style="text-align: center;">
@@ -803,5 +865,64 @@
             <td rowspan="1" align="center">1</td>
         </tr>
     </tbody>
-    
+    <tbody>
+        <tr aria-rowspan="18">
+            <td rowspan="3" align="center">station_pid</td>
+            <td rowspan="1" align="center">kp</td>
+            <td rowspan="1" align="center">0.6</td>
+            <td rowspan="17"><img src="/image/param/lateral_err_pid_p_d.png"></td>
+        </tr>
+        <tr>
+            <td rowspan="1" align="center">ki</td>
+            <td rowspan="1" align="center">0.0</td>
+        </tr>
+        <tr>
+            <td rowspan="1" align="center">kd</td>
+            <td rowspan="1" align="center">0.0</td>
+        </tr>
+        <tr>
+            <td rowspan="3" align="center">speed_pid</td>
+            <td rowspan="1" align="center">kp</td>
+            <td rowspan="1" align="center">1.6</td>
+        </tr>
+        <tr>
+            <td rowspan="1" align="center">ki</td>
+            <td rowspan="1" align="center">0.8</td>
+        </tr>
+        <tr>
+            <td rowspan="1" align="center">kd</td>
+            <td rowspan="1" align="center">1.8</td>
+        </tr>
+        <tr>
+            <td rowspan="3" align="center">lateral_err_pid</td>
+            <td rowspan="1" align="center">kp</td>
+            <td rowspan="1" align="center">4.5</td>
+        </tr>
+        <tr>
+            <td rowspan="1" align="center">ki</td>
+            <td rowspan="1" align="center">0.0</td>
+        </tr>
+        <tr>
+            <td rowspan="1" align="center">kd</td>
+            <td rowspan="1" align="center">0.2</td>
+        </tr>
+        <tr>
+            <td rowspan="5" align="center">LQR</td>
+            <td rowspan="4" align="center">Q</td>
+            <td rowspan="1" align="center">1.2</td>
+        </tr>
+        <tr>
+            <td rowspan="1" align="center">0.2</td>
+        </tr>
+        <tr>
+            <td rowspan="1" align="center">1.0</td>
+        </tr>
+        <tr>
+            <td rowspan="1" align="center">0.2</td>
+        </tr>
+        <tr>
+            <td rowspan="1" align="center">R</td>
+            <td rowspan="1" align="center">10</td>
+        </tr>
+    </tbody>
 </table>
