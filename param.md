@@ -31,6 +31,12 @@
         <td></td>
     </tr>
     <tr>
+        <td>query_relative_time_</td>
+        <td>查询相对时间, 用于查找绝对时间最接近给定时间的轨迹点, 默认0.8</td>
+        <td></td>
+        <td></td>
+    </tr>
+    <tr>
         <td>lookahead_station_low_speed_</td>
         <td>纵向长度用于向前驱动期间的前瞻横向误差估计, 默认1.4224</td>
         <td></td>
@@ -367,7 +373,7 @@
         <tr aria-rowspan="5">
             <td rowspan="1" align="center">kp</td>
             <td rowspan="1" align="center">0.8</td>
-            <td rowspan="4"><img src="/image/param/lat_err_feedback_angle_P_0.8.png"</td>
+            <td rowspan="4"><img src="/image/param/lat_err_feedback_angle_P_1.4_Q_0.05_0_1_0.png"</td>
         </tr>
         <tr>
             <td rowspan="1" align="center">ki</td>
@@ -380,6 +386,40 @@
         <tr>
             <td rowspan="1" align="center">Q</td>
             <td rowspan="1" align="center">[0.05,0,1,0]</td>
+        </tr>
+    </tbody>
+    <tbody>
+        <tr aria-rowspan="4">
+            <td rowspan="1" align="center">kp</td>
+            <td rowspan="1" align="center">0.8</td>
+            <td rowspan="3"><img src="/image/param/lat_err_feedback_angle_P_1.6.png"</td>
+        </tr>
+        <tr>
+            <td rowspan="1" align="center">ki</td>
+            <td rowspan="1" align="center">0.0</td>
+        </tr>
+        <tr>
+            <td rowspan="1" align="center">kd</td>
+            <td rowspan="1" align="center">0.0</td>
+        </tr>
+    </tbody>
+    <tbody>
+        <tr aria-rowspan="5">
+            <td rowspan="1" align="center">kp</td>
+            <td rowspan="1" align="center">0.8</td>
+            <td rowspan="4"><img src="/image/param/lat_err_feedback_angle_P_1.4_Q_1_1_1_1.png"</td>
+        </tr>
+        <tr>
+            <td rowspan="1" align="center">ki</td>
+            <td rowspan="1" align="center">0.0</td>
+        </tr>
+        <tr>
+            <td rowspan="1" align="center">kd</td>
+            <td rowspan="1" align="center">0.0</td>
+        </tr>
+        <tr>
+            <td rowspan="1" align="center">Q</td>
+            <td rowspan="1" align="center">[1,1,1,1]</td>
         </tr>
     </tbody>
 </table>
