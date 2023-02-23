@@ -1,0 +1,24 @@
+Run made by VS Road Calculator at 18:13 on February 15, 2023.
+Utility to calculate road and path coordinates for visualization
+Started with simfile: Roads\3D_Road\simfile_road
+
+Include PARSFILE "Roads\3D_Road\Road_c76ab0d9-60d9-4781-bd32-84e57bf8316e.par"
+Include PARSFILE "Roads\BuilderSegment\RoadSeg_c29d150f-d67a-4cc2-b3b4-068c073a2a5b.par"
+Include PARSFILE "Roads\XY_Table\XYtab_79c50b58-4027-499d-a675-38e40e402f29.par"
+Used Dataset: Path: X-Y Coordinates for Segment; Starbucks
+ Straight North <Straight>
+Used Dataset: Path: Segment Builder; { Straight } Straight North
+Include PARSFILE "Roads\Center_Z\RdRefZ_598f8ea7-d2f1-4e0b-a828-7b8c7dfb136e.par"
+Used Dataset: Road: Reference Line Elevation; { Flat } Flat
+Include PARSFILE "Roads\Friction\RdMu_25e73395-9471-44b9-9c60-27bd9cc24921.par"
+Used Dataset: Road: Friction Map, S-L Grid; { Constant } Constant: 0.85
+Include PARSFILE "Roads\Shapes\RdShape_ae431108-1a17-4d30-8913-a797b15d72c1.par"
+Used Dataset: Road: Animator Surface Shapes; { Lane-Keeping Assist Roads } Two Lanes
+ DLC, Mu = 0.85 <Flat Test Pads>
+Used Dataset: Road: 3D Surface (All Properties); { Flat Test Pads } DLC, Mu = 0.85
+
+Time to read input = 0.017
+
+Run stopped at t = 14.44. Stop time reached.
+
+Run started: VS output file = Roads\3D_Road\Road_c76ab0d9-60d9-4781-bd32-84e57bf8316e.vsb

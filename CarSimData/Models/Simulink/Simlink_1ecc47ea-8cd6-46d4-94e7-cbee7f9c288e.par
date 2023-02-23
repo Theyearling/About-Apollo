@@ -1,0 +1,26 @@
+PARSFILE
+#FullDataName Models: Simulink`test`
+#RunMdlFile planning_control.slx
+SIMULINK_MODEL_FILE planning_control.slx
+#RingCtrl0 -1
+#CheckBox0 0    
+*USE_ALT_DIR 0
+#CheckBox1 0    
+*USE_DIFF_SOLVERS 0
+#CheckBox3 0    
+PARSFILE IO_Channels\I_Channels\Import_e50ccede-97fd-4d47-aa47-4deb8d5b601c.par
+#BlueLink0 I/O Channels: Import`testin` ` , Import`Import_e50ccede-97fd-4d47-aa47-4deb8d5b601c
+
+PARSFILE IO_Channels\O_Channels\Export_3f7c525a-94a7-4892-b742-3910ca261ddb.par
+#BlueLink1 I/O Channels: Export`testout` ` , Import/Export`Export_3f7c525a-94a7-4892-b742-3910ca261ddb
+
+
+LOG_ENTRY Used Dataset: Models: Simulink; test
+#Library : Models: Simulink
+#DataSet : test
+#Category: 
+#FileID  : Simlink_1ecc47ea-8cd6-46d4-94e7-cbee7f9c288e
+#Product : CarSim 2020.0
+#VehCode 
+
+END

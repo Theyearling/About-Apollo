@@ -1,0 +1,37 @@
+PARSFILE
+#FullDataName I/O Channels: Export`testout`
+#RingCtrl0 2
+#RingCtrl1 1
+*README_FILE Results\Run_6cb07365-85a3-4a3b-95f9-c5c844687601\Run_out_tab.txt
+
+
+EXPORT Xo
+EXPORT Yo
+EXPORT Yaw
+EXPORT Vx
+EXPORT Vy
+EXPORT AVz
+EXPORT AV_Eng
+#MiscYellow0
+#Number of Selected Channels: 7
+#CHN_NAME: Xo
+#CHN_NAME: Yo
+#CHN_NAME: Yaw
+#CHN_NAME: Vx
+#CHN_NAME: Vy
+#CHN_NAME: AVz
+#CHN_NAME: AV_Eng
+#ENDMYellow
+
+#BlueLink0 CarSim Run Control`Baseline` * * Quick Start Guide Example` , example run`Run_6cb07365-85a3-4a3b-95f9-c5c844687601
+
+
+LOG_ENTRY Used Dataset: I/O Channels: Export; testout
+#Library : I/O Channels: Export
+#DataSet : testout
+#Category: 
+#FileID  : Export_3f7c525a-94a7-4892-b742-3910ca261ddb
+#Product : CarSim 2020.0
+#VehCode Export Channels
+
+END

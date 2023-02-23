@@ -1,0 +1,32 @@
+PARSFILE
+#FullDataName Powertrain: Transmission (18 Gears or CVT)`calibration`
+#RingCtrl0 1
+NGEARS 1
+#RingCtrl1 1
+OPT_SHIFT_INTERNAL 1
+#RingCtrl2 1
+OPT_TR_GEAR_INTERNAL 1
+#CheckBox0 0    
+R_GEAR_TR_REVERSE -3
+R_GEAR_TR(1) 2
+ITR_REVERSE 0.034
+ITR_NEUTRAL 0.034
+ITR(1) 0.037
+R_EFF_TR_F_REVERSE 0.9
+R_EFF_TR_F(1) 0.92
+R_EFF_TR_R_REVERSE 0.9
+R_EFF_TR_R(1) 0.92
+T_SHIFT 0.0001
+
+
+igear 1
+
+LOG_ENTRY Used Dataset: Powertrain: Transmission (18 Gears or CVT); calibration
+#Library : Powertrain: Transmission (18 Gears or CVT)
+#DataSet : calibration
+#Category: 
+#FileID  : Trans18_5ac573ea-81b7-409a-bc22-fef3a8bd3b42
+#Product : CarSim 2020.0
+#VehCode Transmission
+
+END

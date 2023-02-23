@@ -1,0 +1,27 @@
+PARSFILE
+#FullDataName I/O Channels: Import`testin`
+#RingCtrl0 2
+#RingCtrl1 1
+*README_FILE Results\Run_6cb07365-85a3-4a3b-95f9-c5c844687601\Run_imp_tab.txt
+
+#MiscYellow0
+IMP_MENGINE Replace 0.0 ! 1
+IMP_PCON_BK Replace 0.0 ! 1
+IMP_STEER_L1 Replace 0.0 ! 1
+IMP_STEER_R1 Replace 0.0 ! 1
+IMP_STEER_L2 Replace 0.0 ! 1
+IMP_STEER_R2 Replace 0.0 ! 1
+#ENDMYellow
+
+#BlueLink0 CarSim Run Control`Baseline` * * Quick Start Guide Example` , example run`Run_6cb07365-85a3-4a3b-95f9-c5c844687601
+
+
+LOG_ENTRY Used Dataset: I/O Channels: Import; testin
+#Library : I/O Channels: Import
+#DataSet : testin
+#Category: 
+#FileID  : Import_e50ccede-97fd-4d47-aa47-4deb8d5b601c
+#Product : CarSim 2020.0
+#VehCode Import Channels
+
+END
