@@ -58,3 +58,27 @@ $$
 1. 手动添加函数参数变量，右击变量，选中Data Scope for "变量" -> Parameter                       
 2.                                                               
 ![add_data](/image/add_data.png)       
+
+# CarSim配置车辆相关信息参数
+## 车长、高、轴距等
+![车辆信息](/image/vehicle_param.png)
+
+## 车宽
+![前后轮轴距](/image/vehicle_width.png)
+
+## CarSim动画模型车辆信息
+![动画模型](/image/carsim_animator.png)
+
+# 设置路径，初始状态，仿真停止条件等信息
+![](/image/procedure_param.png)
+
+## 设置路径信息
+![](/image/carsim_path_1.png)
+![](/image/carsim_path_2.png)
+![](/image/carsim_path_3.png)
+
+# CarSim连接Simulink
+![](/image/to_simulink_1.png)
+![](/image/to_simulink_2.png)
+![](/image/to_simulink_3.png)
+![](/image/to_simulink_4.png)
